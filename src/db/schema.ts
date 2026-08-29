@@ -5,6 +5,8 @@ import {
   timestamp,
   boolean,
   index,
+  integer,
+  jsonb,
   uniqueIndex,
 } from "drizzle-orm/pg-core";
 
@@ -96,8 +98,17 @@ export const looks = pgTable(
       .references(() => user.id, { onDelete: "cascade" }),
     modelPhotoUrl: text("model_photo_url").notNull(),
     garmentPhotoUrl: text("garment_photo_url").notNull(),
+    imageDataUrl: text("image_data_url").notNull(),
     providerRequestId: text("provider_request_id").notNull(),
     fitVerdict: text("fit_verdict").notNull(),
+    category: text("category").notNull(),
+    bodyChestCm: integer("body_chest_cm").notNull(),
+    bodyHeightCm: integer("body_height_cm").notNull(),
+    bodyShoulderCm: integer("body_shoulder_cm").notNull(),
+    referenceSize: text("reference_size").notNull(),
+    recommendedSize: text("recommended_size").notNull(),
+    recommendedChestCm: integer("recommended_chest_cm").notNull(),
+    sizeChart: jsonb("size_chart").notNull(),
     status: text("status").notNull(),
     createdAt: timestamp("created_at").defaultNow().notNull(),
     updatedAt: timestamp("updated_at")

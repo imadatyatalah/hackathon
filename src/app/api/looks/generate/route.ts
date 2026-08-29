@@ -356,8 +356,17 @@ export async function POST(request: Request) {
       userId: session.user.id,
       modelPhotoUrl,
       garmentPhotoUrl,
+      imageDataUrl: `data:image/png;base64,${imageBase64}`,
       providerRequestId,
       fitVerdict: fitLabel,
+      category: category.trim(),
+      bodyChestCm,
+      bodyHeightCm,
+      bodyShoulderCm,
+      referenceSize: referenceSizeKey.toUpperCase(),
+      recommendedSize: recommendedSize.toUpperCase(),
+      recommendedChestCm,
+      sizeChart,
       status: "completed",
     })
     .returning({ id: looks.id });
@@ -367,6 +376,5 @@ export async function POST(request: Request) {
     fitVerdict: fitLabel,
     recommendedSize: recommendedSize.toUpperCase(),
     recommendedChestCm,
-    imageDataUrl: `data:image/png;base64,${imageBase64}`,
   });
 }

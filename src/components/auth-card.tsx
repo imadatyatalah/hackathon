@@ -50,12 +50,12 @@ export function AuthCard() {
   }
 
   if (isLoadingSession) {
-    return <p className="text-sm text-zinc-500">Loading session…</p>;
+    return <p className="text-sm text-[#d2e0d7]">Loading session…</p>;
   }
 
   if (session) {
     return (
-      <div className="space-y-5">
+      <div className="space-y-5 rounded-[1.5rem] bg-white p-5 text-slate-950 shadow-[0_18px_45px_-28px_rgba(0,0,0,0.7)]">
         <div className="flex flex-wrap items-center justify-between gap-3 px-1">
           <p className="text-sm text-slate-600">
             Signed in as <span className="font-semibold text-slate-950">{session.user.name}</span>
@@ -76,14 +76,14 @@ export function AuthCard() {
   }
 
   return (
-    <section className="w-full max-w-md rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
-      <div className="flex rounded-lg bg-zinc-100 p-1 dark:bg-zinc-900">
+    <section className="w-full max-w-md rounded-2xl border border-zinc-300 bg-white p-6 text-zinc-950 shadow-[0_18px_45px_-28px_rgba(0,0,0,0.7)]">
+      <div className="flex rounded-lg bg-zinc-100 p-1">
         {(["sign-in", "sign-up"] as const).map((nextMode) => (
           <button
             className={`flex-1 rounded-md px-3 py-2 text-sm font-medium transition ${
               mode === nextMode
-                ? "bg-white text-zinc-950 shadow-sm dark:bg-zinc-800 dark:text-white"
-                : "text-zinc-600 dark:text-zinc-400"
+                ? "bg-white text-zinc-950 shadow-sm"
+                : "text-zinc-600"
             }`}
             key={nextMode}
             onClick={() => {
@@ -102,7 +102,7 @@ export function AuthCard() {
           <label className="block text-sm font-medium">
             Name
             <input
-              className="mt-1 w-full rounded-lg border border-zinc-300 bg-transparent px-3 py-2 outline-none focus:border-zinc-950 dark:border-zinc-700 dark:focus:border-white"
+              className="mt-1 w-full rounded-lg border border-zinc-500 bg-transparent px-3 py-2 outline-none focus:border-zinc-950 focus:ring-4 focus:ring-[#dce2d8]"
               name="name"
               required
               type="text"
@@ -113,7 +113,7 @@ export function AuthCard() {
           Email
           <input
             autoComplete="email"
-            className="mt-1 w-full rounded-lg border border-zinc-300 bg-transparent px-3 py-2 outline-none focus:border-zinc-950 dark:border-zinc-700 dark:focus:border-white"
+            className="mt-1 w-full rounded-lg border border-zinc-500 bg-transparent px-3 py-2 outline-none focus:border-zinc-950 focus:ring-4 focus:ring-[#dce2d8]"
             name="email"
             required
             type="email"
@@ -123,7 +123,7 @@ export function AuthCard() {
           Password
           <input
             autoComplete={mode === "sign-in" ? "current-password" : "new-password"}
-            className="mt-1 w-full rounded-lg border border-zinc-300 bg-transparent px-3 py-2 outline-none focus:border-zinc-950 dark:border-zinc-700 dark:focus:border-white"
+            className="mt-1 w-full rounded-lg border border-zinc-500 bg-transparent px-3 py-2 outline-none focus:border-zinc-950 focus:ring-4 focus:ring-[#dce2d8]"
             minLength={8}
             name="password"
             required
@@ -131,7 +131,7 @@ export function AuthCard() {
           />
         </label>
         <button
-          className="w-full rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-zinc-700 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-zinc-100 dark:text-zinc-950 dark:hover:bg-zinc-300"
+          className="w-full rounded-lg bg-[#17221f] px-4 py-2.5 text-sm font-medium text-white transition hover:bg-[#2d4039] disabled:cursor-not-allowed disabled:opacity-60"
           disabled={isSubmitting}
           type="submit"
         >
